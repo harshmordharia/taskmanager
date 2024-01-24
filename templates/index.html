@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Borel' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+    <title>Task Manager</title>
+    <style>
+        body {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('static/bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'kanit';
+            background-color: #1a1a1a;
+            color: #fff;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="heading">Hello</h1>
+    <p class="sub-heading">Welcome Onboard !</p>
+
+    <div class="options">
+        <button onclick="toggleForm('taskForm')">Add a Task</button>
+    </div>
+
+    <form id="taskForm" class="hidden" action="{{ url_for('add_task') }}" method="post">
+        <label for="name">Task:</label>
+        <input type="text" id="name" name="name" required autocomplete="off">
+
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" name="deadline" required autocomplete="off">
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required autocomplete="off">
+
+        <button type="submit" style="width: 100px; height: 40px; margin-left: 380px;">Submit</button>
+
+    </form>
+
+    <div class="container">
+
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Deadline</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.name }}</td>
+                <td>{{ task.deadline|format_deadline }}</td>
+                <td>{{ task.description }}</td>
+                <td><a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="clock-container">
+        <div class="clock">
+            <div class="time" id="time"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(formId) {
+            const form = document.getElementById(formId);
+            form.classList.toggle('hidden');
+        }
+
+        function updateClock() {
+            var now = new Date();
+            var time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false  });
+
+            document.getElementById('time').innerText = time;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial update
+    </script>
+
+</body>
+
+</html>

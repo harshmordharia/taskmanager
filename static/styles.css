@@ -1,0 +1,219 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-family: 'kanit';
+    background-color: #1a1a1a;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('static/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.heading, .sub-heading {
+    font-family: 'Borel', sans-serif;
+    text-align: center;
+}
+
+.heading {
+    color: #ffffff;
+    font-size: 70px;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px #000000;
+    margin-bottom: -90px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #ffffff; /* blinking cursor effect */
+    opacity: 0;
+    animation: headingAnimation 3s ease-out forwards;
+}
+
+@keyframes headingAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+.heading {
+    color: #ffffff;
+    font-size: 70px;
+    font-weight: bold;
+    margin-bottom: -90px;
+    transition: all 0.3s ease;
+    text-shadow: 3px 3px 3px #000000;
+}
+*/
+
+.sub-heading {
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: -40px;
+    text-shadow: 3px 3px 3px #000000;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.296);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: rgba(126, 11, 198, 0.212);
+    transform: scale(1.05);
+}
+
+
+form {
+    margin: 20px auto;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fefffe;
+    font-size: 18px;
+}
+
+input {
+    width: 50%;
+    padding: 12px;
+    margin: 0 auto 15px auto;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.067);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    transition: background-color 0.3s, border 0.3s, transform 0.2s, color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input:disabled {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+input:focus {
+    outline: none;
+    transform: scale(1.02);
+}
+
+input:hover {
+    background-color: rgba(187, 187, 187, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    transform: scale(1.02);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 8px;
+}
+
+th, td {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(251, 248, 248, 0.2);
+    border-radius: 8px;
+}
+
+a {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.clock-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.clock {
+    width: 160px;
+    padding: 15px;
+    background-color: rgba(13, 11, 11, 0.6);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.time {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #fff;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+    }
+}
